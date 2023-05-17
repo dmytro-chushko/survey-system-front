@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import App from "./app";
+import { persistor, store } from "redux/store";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -10,8 +13,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <CssBaseline />
-    <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <CssBaseline />
+        <App />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 
