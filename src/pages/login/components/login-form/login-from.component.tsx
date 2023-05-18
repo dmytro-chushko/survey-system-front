@@ -7,12 +7,13 @@ import { LoginFormData } from "types/login.types";
 import { loginSchema } from "validation-schemas/login-schemas";
 import { EmailField } from "../email-field";
 import { PasswordField } from "../password-field";
+import { useLoginForm } from "./login-form.hook";
 
 export const LoginForm = () => {
+  const { onSubmit, isLoading } = useLoginForm();
   const {
     handleSubmit,
     control,
-    register,
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema),
@@ -22,8 +23,6 @@ export const LoginForm = () => {
       password: "",
     },
   });
-
-  const onSubmit = (data: LoginFormData) => console.log(data);
 
   return (
     <Box>
@@ -45,7 +44,7 @@ export const LoginForm = () => {
             type="submit"
             loadingPosition="start"
             variant="contained"
-            loading={false}
+            loading={isLoading}
             startIcon={<Login />}
           >
             Sign in

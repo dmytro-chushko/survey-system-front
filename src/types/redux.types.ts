@@ -7,5 +7,11 @@ export type Token = string | null | undefined;
 
 export interface IUserData {
   token: Token;
-  role: ROLE | null;
+  role: ROLE | null | undefined;
+}
+
+export interface ILoginRes {
+  token: string;
+  role: ROLE;
+  passedCategories: string[];
 }
