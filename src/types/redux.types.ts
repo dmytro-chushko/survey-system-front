@@ -15,3 +15,8 @@ export interface ILoginRes {
   role: ROLE;
   passedCategories: string[];
 }
+
+export interface IUserInfo {
+  email: string;
+  role: ROLE;
+}
