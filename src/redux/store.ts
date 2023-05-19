@@ -10,12 +10,14 @@ import {
 } from "redux-persist";
 import { persistedReducer } from "./persist-config";
 import { userApi } from "./api/user.api";
-import { rtkQueryErrorLogger } from "./middlewares/error-handler.middleware";
+import { questionsApi } from "./api/questions.api";
+import { errorHandler } from "./middlewares/error-handler.middleware";
 
 export const store = configureStore({
   reducer: {
     user: persistedReducer,
     [userApi.reducerPath]: userApi.reducer,
+    [questionsApi.reducerPath]: questionsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -23,8 +25,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     })
-      .concat(userApi.middleware)
-      .concat(rtkQueryErrorLogger),
+      .concat(userApi.middleware, questionsApi.middleware)
+      .concat(errorHandler),
 });
 
 export const persistor = persistStore(store);

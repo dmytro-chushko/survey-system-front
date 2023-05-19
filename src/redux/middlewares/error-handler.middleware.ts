@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-export const rtkQueryErrorLogger: Middleware =
+export const errorHandler: Middleware =
   (api: MiddlewareAPI) => (next) => (action) => {
     if (isRejectedWithValue(action)) {
       if ("data" in action.payload) {

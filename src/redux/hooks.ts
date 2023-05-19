@@ -1,7 +1,7 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "./store";
-import { ROLE, Token } from "types/redux.types";
 import { getRole, getToken } from "./reducers/user-data.reducer";
+import { ROLE, Token } from "types/login.types";
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 

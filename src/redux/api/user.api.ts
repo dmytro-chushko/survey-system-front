@@ -1,7 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "redux/base-query";
-import { LoginFormData } from "types/login.types";
-import { ILoginRes, IUserInfo } from "types/redux.types";
+import { ILoginRes, IUserInfo, LoginFormData } from "types/login.types";
 import { REDUX_ROUTE_KEYS } from "utils/consts";
 
 export const userApi = createApi({

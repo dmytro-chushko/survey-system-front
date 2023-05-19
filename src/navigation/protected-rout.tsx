@@ -1,7 +1,7 @@
 import { SharedLayout } from "components/shared-layout";
 import { Navigate, Outlet } from "react-router-dom";
 import { useGetUserData } from "redux/hooks";
-import { ROLE } from "types/redux.types";
+import { ROLE } from "types/login.types";
 
 interface IProtectedRoute {
   role: ROLE;
@@ -26,6 +26,6 @@ export const PublicRoute = () => {
   return !useGetUserData().token ? (
     <Outlet />
   ) : (
-    <Navigate to="take-survey" replace />
+    <Navigate to="survey-results" replace />
   );
 };
