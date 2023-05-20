@@ -1,1 +1,1 @@
-export { SurveyList } from "./surey-list.page";
+export { SurveyList } from "./survey-list.page";

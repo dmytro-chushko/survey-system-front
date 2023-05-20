@@ -8,7 +8,7 @@ export const questionsApi = createApi({
   baseQuery,
   tagTypes: ["Questions"],
   endpoints: (builder) => ({
-    getCategories: builder.query<ICategory[], void>({
+    getCategories: builder.query<Omit<ICategory, "questions">[], void>({
       query: () => ({ url: REDUX_ROUTE_KEYS.CATEGORIES }),
       providesTags: ["Questions"],
     }),

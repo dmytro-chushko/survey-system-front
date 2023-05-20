@@ -2,7 +2,7 @@ import { useGetCategoriesQuery } from "redux/api/questions.api";
 import { ICategory } from "types/questions.types";
 
 interface IUseSurveyList {
-  data?: ICategory[];
+  data?: Omit<ICategory, "questions">[];
   isLoading: boolean;
 }
 

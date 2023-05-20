@@ -1,5 +1,4 @@
 import { Login } from "@mui/icons-material";
-import { LoadingButton } from "@mui/lab";
 import { Box, Grid } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +7,7 @@ import { loginSchema } from "validation-schemas/login-schemas";
 import { EmailField } from "../email-field";
 import { PasswordField } from "../password-field";
 import { useLoginForm } from "./login-form.hook";
+import { SubmitButton } from "components/submit-button";
 
 export const LoginForm = () => {
   const { onSubmit, isLoading } = useLoginForm();
@@ -40,15 +40,9 @@ export const LoginForm = () => {
               <PasswordField field={field} errors={errors} />
             )}
           ></Controller>
-          <LoadingButton
-            type="submit"
-            loadingPosition="start"
-            variant="contained"
-            loading={isLoading}
-            startIcon={<Login />}
-          >
+          <SubmitButton icon={<Login />} isLoading={isLoading}>
             Sign in
-          </LoadingButton>
+          </SubmitButton>
         </Grid>
       </form>
     </Box>

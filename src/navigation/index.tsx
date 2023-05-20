@@ -2,9 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "pages/login";
 import { SurveyList } from "pages/survey-list";
 import { SurveyTable } from "pages/survey-table";
-import { ProtectedRoute, PublicRoute } from "./protected-rout";
+import { ProtectedRoute, PublicRoute } from "./protected-route";
 import { APP_ROUTE_KEYS } from "utils/consts";
 import { ROLE } from "types/login.types";
+import { Survey } from "pages/survey";
 
 export const MainRouter = () => (
   <BrowserRouter>
@@ -21,6 +22,10 @@ export const MainRouter = () => (
         }
       >
         <Route path={APP_ROUTE_KEYS.SURVEY_LIST} element={<SurveyList />} />
+        <Route
+          path={`${APP_ROUTE_KEYS.SURVEY_LIST}/:id`}
+          element={<Survey />}
+        />
       </Route>
       <Route
         element={
