@@ -10,14 +10,14 @@ import {
 } from "redux-persist";
 import { persistedReducer } from "./persist-config";
 import { userApi } from "./api/user.api";
-import { questionsApi } from "./api/questions.api";
 import { errorHandler } from "./middlewares/error-handler.middleware";
+import { surveyApi } from "./api/survey.api";
 
 export const store = configureStore({
   reducer: {
     user: persistedReducer,
     [userApi.reducerPath]: userApi.reducer,
-    [questionsApi.reducerPath]: questionsApi.reducer,
+    [surveyApi.reducerPath]: surveyApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -25,7 +25,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     })
-      .concat(userApi.middleware, questionsApi.middleware)
+      .concat(userApi.middleware, surveyApi.middleware)
       .concat(errorHandler),
 });
 

@@ -1,4 +1,4 @@
-import { useGetCategoriesQuery } from "redux/api/questions.api";
+import { useGetCategoriesQuery } from "redux/api/survey.api";
 import { ICategory } from "types/questions.types";
 
 interface IUseSurveyList {

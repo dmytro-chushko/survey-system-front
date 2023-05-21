@@ -11,6 +11,7 @@ export enum APP_ROUTE_KEYS {
 
 export enum REDUCER_PATHES {
   USER = "user-api",
+  SURVEY = "survey-api",
   QUESTIONS = "question-api",
   ANSWERS = "answers-api",
 }

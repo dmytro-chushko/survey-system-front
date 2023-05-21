@@ -1,19 +1,19 @@
 import { useForm } from "react-hook-form";
 import { Send } from "@mui/icons-material";
-import { Grid, List } from "@mui/material";
+import { Grid, List, Typography } from "@mui/material";
 import { useSurveyForm } from "./survey-form.hook";
 import { Question } from "pages/survey/components/question";
 import { SubmitButton } from "components/submit-button";
+import { ModalWindow } from "components/modal-window";
 
 export const SurveyForm = () => {
-  const { data, isLoading } = useSurveyForm();
+  const { data, isLoading, onSubmit, isModalOpen, handleBackToSurveyList } =
+    useSurveyForm();
   const {
     handleSubmit,
     control,
     formState: errors,
   } = useForm<Record<string, string>>();
-
-  const onSubmit = (data: Record<string, string>) => console.log(data);
 
   return (
     <Grid container alignItems="center" justifyContent="center">
@@ -36,6 +36,13 @@ export const SurveyForm = () => {
           </SubmitButton>
         </Grid>
       </form>
+      <ModalWindow
+        isOpen={isModalOpen}
+        handleButtonClick={handleBackToSurveyList}
+        buttonText="back to survey list"
+      >
+        <Typography>Thank you for completing the survey</Typography>
+      </ModalWindow>
     </Grid>
   );
 };

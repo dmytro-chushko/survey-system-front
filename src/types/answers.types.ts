@@ -7,3 +7,8 @@ export interface IAnswer {
   category: string;
   user: IUserInfo;
 }
+
+export interface ISubmitedAnswers {
+  answers: Record<string, string>;
+  categoryId: string;
+}
