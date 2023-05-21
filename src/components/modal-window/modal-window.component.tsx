@@ -1,12 +1,11 @@
-import { Box, Button, Grid, Modal } from "@mui/material";
-import { TypeSetState } from "types/set-state.types";
+import { Box, Button, Grid, Modal, Typography } from "@mui/material";
 
 interface IModalWindowProps {
   isOpen: boolean;
-  onClose?: TypeSetState<boolean>;
-  children: React.ReactElement;
-  handleButtonClick: () => void;
-  buttonText: string;
+  onClose?: () => void;
+  children: React.ReactNode;
+  handleButtonClick?: () => void;
+  buttonText?: string;
 }
 
 export const ModalWindow: React.FC<IModalWindowProps> = ({
@@ -31,9 +30,9 @@ export const ModalWindow: React.FC<IModalWindowProps> = ({
   return (
     <Modal open={isOpen} onClose={onClose}>
       <Box sx={style}>
-        <Box mb={2}>{children}</Box>
+        <Typography mb={2}>{children}</Typography>
         <Grid container alignItems="cente" justifyContent="center">
-          <Button variant="contained" onClick={handleButtonClick}>
+          <Button variant="contained" onClick={handleButtonClick || onClose}>
             {buttonText || "ok"}
           </Button>
         </Grid>

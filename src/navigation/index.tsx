@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Login } from "pages/login";
 import { SurveyList } from "pages/survey-list";
-import { SurveyTable } from "pages/survey-table";
+import { SurveyResults } from "pages/survey-results";
 import { ProtectedRoute, PublicRoute } from "./protected-route";
 import { APP_ROUTE_KEYS } from "utils/consts";
 import { ROLE } from "types/login.types";
@@ -32,7 +32,10 @@ export const MainRouter = () => (
           <ProtectedRoute role={ROLE.ADMIN} path={APP_ROUTE_KEYS.SURVEY_LIST} />
         }
       >
-        <Route path={APP_ROUTE_KEYS.SURVEY_RESULTS} element={<SurveyTable />} />
+        <Route
+          path={APP_ROUTE_KEYS.SURVEY_RESULTS}
+          element={<SurveyResults />}
+        />
       </Route>
     </Routes>
   </BrowserRouter>

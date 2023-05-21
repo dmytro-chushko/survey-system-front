@@ -1,24 +1,27 @@
-import { Grid, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Button, Grid } from "@mui/material";
 import { useSurveyList } from "./survey-list.hook";
-import { APP_ROUTE_KEYS } from "utils/consts";
+import { ModalWindow } from "components/modal-window";
 
 export const SurveyList = () => {
-  const { data, isLoading } = useSurveyList();
+  const { data, isLoading, handleClick, isModalOpen, onClose } =
+    useSurveyList();
 
   return (
     <Grid container alignItems="center" justifyContent="space-between">
       {data &&
-        data.map(({ _id, title }) => (
+        data.map(({ _id, title, interviewedUsers }) => (
           <Grid key={_id} item xs={6} textAlign="center">
-            <Link
-              component={RouterLink}
-              to={`/${APP_ROUTE_KEYS.SURVEY_LIST}/${_id}`}
+            <Button
+              variant="text"
+              onClick={() => handleClick(_id, interviewedUsers)}
             >
               {title}
-            </Link>
+            </Button>
           </Grid>
         ))}
+      <ModalWindow isOpen={isModalOpen} onClose={onClose}>
+        You have already taken this survey
+      </ModalWindow>
     </Grid>
   );
 };

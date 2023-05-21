@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Send } from "@mui/icons-material";
-import { Grid, List, Typography } from "@mui/material";
+import { Grid, List } from "@mui/material";
 import { useSurveyForm } from "./survey-form.hook";
 import { Question } from "pages/survey/components/question";
 import { SubmitButton } from "components/submit-button";
@@ -41,7 +41,7 @@ export const SurveyForm = () => {
         handleButtonClick={handleBackToSurveyList}
         buttonText="back to survey list"
       >
-        <Typography>Thank you for completing the survey</Typography>
+        Thank you for completing the survey
       </ModalWindow>
     </Grid>
   );

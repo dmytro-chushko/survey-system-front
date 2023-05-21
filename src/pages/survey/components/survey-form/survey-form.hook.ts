@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSubmitAnwsersMutation } from "redux/api/survey.api";
 import { useGetCategoryByIdQuery } from "redux/api/survey.api";
+import { useGetUserInfoQuery } from "redux/api/user.api";
 import { ICategory } from "types/questions.types";
 import { APP_ROUTE_KEYS } from "utils/consts";
 
@@ -21,16 +22,26 @@ export const useSurveyForm = (): IUseServeyForm => {
   const { data, isLoading } = useGetCategoryByIdQuery(id || "");
   const [submitAnswers, { isLoading: isSubmitting }] =
     useSubmitAnwsersMutation();
+  const { data: userInfo } = useGetUserInfoQuery();
 
   const onSubmit = async (data: Record<string, string>) => {
     await submitAnswers({ answers: data, categoryId: id || "" });
-    setIsModalOpen(true);
   };
 
   const handleBackToSurveyList = () => {
     setIsModalOpen(false);
     navigate(`/${APP_ROUTE_KEYS.SURVEY_LIST}`);
   };
+
+  useEffect(() => {
+    if (
+      data &&
+      userInfo &&
+      data.interviewedUsers.some((el) => el === userInfo._id)
+    ) {
+      setIsModalOpen(true);
+    }
+  }, [data, userInfo]);
 
   return {
     data,

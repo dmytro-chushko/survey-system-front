@@ -1,3 +1,3 @@
-export const SurveyTable = () => {
+export const SurveyResults = () => {
   return <div>Survey Table</div>;
 };
