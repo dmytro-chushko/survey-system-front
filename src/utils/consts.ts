@@ -2,6 +2,7 @@ export enum REDUX_ROUTE_KEYS {
   LOGIN = "/auth/login",
   INFO = "/user/info",
   CATEGORIES = "/surveys/categories",
+  ANSWERS = "/answers",
 }
 export enum APP_ROUTE_KEYS {
   SURVEY_LIST = "survey-list",
@@ -11,5 +12,5 @@ export enum APP_ROUTE_KEYS {
 export enum REDUCER_PATHES {
   USER = "user-api",
   QUESTIONS = "question-api",
-  RESULTS = "results-api",
+  ANSWERS = "answers-api",
 }
