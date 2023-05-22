@@ -17,8 +17,10 @@ export const surveyApi = createApi({
       query: (id) => ({ url: `${REDUX_ROUTE_KEYS.CATEGORIES}/${id}` }),
       providesTags: ["Questions"],
     }),
-    getAnswers: builder.query<IAnswer[], void>({
-      query: () => ({ url: REDUX_ROUTE_KEYS.ANSWERS }),
+    getAnswersByCategory: builder.query<IAnswer[], string>({
+      query: (categoryId) => ({
+        url: `${REDUX_ROUTE_KEYS.ANSWERS}/${categoryId}`,
+      }),
       providesTags: ["Answers"],
     }),
     submitAnwsers: builder.mutation<{ message: string }, ISubmitedAnswers>({
@@ -36,5 +38,5 @@ export const {
   useGetCategoriesQuery,
   useGetCategoryByIdQuery,
   useSubmitAnwsersMutation,
-  useGetAnswersQuery,
+  useGetAnswersByCategoryQuery,
 } = surveyApi;

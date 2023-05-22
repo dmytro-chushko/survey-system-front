@@ -5,7 +5,7 @@ export interface IAnswer {
   answer: string;
   question: string;
   category: string;
-  user: IUserInfo;
+  user: string;
 }
 
 export interface ISubmitedAnswers {

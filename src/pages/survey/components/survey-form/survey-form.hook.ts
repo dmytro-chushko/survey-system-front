@@ -37,7 +37,7 @@ export const useSurveyForm = (): IUseServeyForm => {
     if (
       data &&
       userInfo &&
-      data.interviewedUsers.some((el) => el === userInfo._id)
+      data.interviewedUsers.some(({ _id }) => _id === userInfo._id)
     ) {
       setIsModalOpen(true);
     }
