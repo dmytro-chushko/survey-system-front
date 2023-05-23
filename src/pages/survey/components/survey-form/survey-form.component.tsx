@@ -7,8 +7,14 @@ import { SubmitButton } from "components/submit-button";
 import { ModalWindow } from "components/modal-window";
 
 export const SurveyForm = () => {
-  const { data, isLoading, onSubmit, isModalOpen, handleBackToSurveyList } =
-    useSurveyForm();
+  const {
+    data,
+    isLoading,
+    isSubmitting,
+    onSubmit,
+    isModalOpen,
+    handleBackToSurveyList,
+  } = useSurveyForm();
   const { handleSubmit, control } = useForm<Record<string, string>>();
 
   return (
@@ -27,7 +33,7 @@ export const SurveyForm = () => {
             ))}
         </List>
         <Grid container alignItems="center" justifyContent="flex-end">
-          <SubmitButton icon={<Send />} isLoading={isLoading}>
+          <SubmitButton icon={<Send />} isLoading={isLoading || isSubmitting}>
             Submit
           </SubmitButton>
         </Grid>
