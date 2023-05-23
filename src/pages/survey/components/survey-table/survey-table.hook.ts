@@ -14,13 +14,15 @@ interface IUseSurveyTable {
 }
 
 export const useSurveyTable = (): IUseSurveyTable => {
-  const { id } = useParams();
-  const { data: category } = useGetCategoryByIdQuery(id || "");
-  const { data: answers } = useGetAnswersByCategoryQuery(id || "");
+  const { id: categoryId } = useParams();
+  const { data: category } = useGetCategoryByIdQuery(categoryId || "");
+  const { data: answers } = useGetAnswersByCategoryQuery(categoryId || "");
 
   const filterAndSortAnswers = useMemo(
     () => (id: string) => {
-      const filteredAnswers = answers?.filter(({ user }) => user === id);
+      const filteredAnswers = answers?.filter(
+        ({ user, category }) => user === id && category === categoryId
+      );
 
       const sortedAnswersByQuestions = filteredAnswers?.reduce<IAnswer[]>(
         (answersArr, _, i, arr) => {
@@ -35,7 +37,7 @@ export const useSurveyTable = (): IUseSurveyTable => {
 
       return sortedAnswersByQuestions;
     },
-    [category, answers]
+    [answers, categoryId, category?.questions]
   );
 
   return {
