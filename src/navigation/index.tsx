@@ -6,7 +6,7 @@ import { APP_ROUTE_KEYS } from "utils/consts";
 import { Survey } from "pages/survey";
 
 export const MainRouter = () => (
-  <BrowserRouter basename="/survey-system-front">
+  <BrowserRouter>
     <Routes>
       <Route element={<PublicRoute />}>
         <Route path="/" element={<Login />} />
