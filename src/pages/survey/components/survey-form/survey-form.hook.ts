@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useSubmitAnwsersMutation } from "redux/api/survey.api";
 import { useGetCategoryByIdQuery } from "redux/api/survey.api";
 import { useGetUserInfoQuery } from "redux/api/user.api";
@@ -25,6 +26,10 @@ export const useSurveyForm = (): IUseServeyForm => {
   const { data: userInfo } = useGetUserInfoQuery();
 
   const onSubmit = async (data: Record<string, string>) => {
+    if (Object.values(data).some((item) => item === "")) {
+      toast.error("Pleas, check all questions");
+      return;
+    }
     await submitAnswers({ answers: data, categoryId: id || "" });
   };
 

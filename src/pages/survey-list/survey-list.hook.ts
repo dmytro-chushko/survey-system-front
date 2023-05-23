@@ -23,15 +23,13 @@ export const useSurveyList = (): IUseSurveyList => {
   const { data: userInfo } = useGetUserInfoQuery();
 
   const handleClick = (id: string, array: Omit<IUserInfo, "role">[]) => {
-    console.log(array);
-    console.log(userInfo?._id);
     if (
       role === ROLE.GUEST &&
       userInfo &&
       array.some(({ _id }) => _id === userInfo._id)
     ) {
       setIsModalOpen(true);
-      console.log("Click");
+
       return;
     }
     navigate(`/${APP_ROUTE_KEYS.SURVEY_LIST}/${id}`);

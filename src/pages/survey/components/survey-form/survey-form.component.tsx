@@ -9,11 +9,7 @@ import { ModalWindow } from "components/modal-window";
 export const SurveyForm = () => {
   const { data, isLoading, onSubmit, isModalOpen, handleBackToSurveyList } =
     useSurveyForm();
-  const {
-    handleSubmit,
-    control,
-    formState: errors,
-  } = useForm<Record<string, string>>();
+  const { handleSubmit, control } = useForm<Record<string, string>>();
 
   return (
     <Grid container alignItems="center" justifyContent="center">

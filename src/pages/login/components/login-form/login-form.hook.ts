@@ -23,7 +23,7 @@ export const useLoginForm = (): IUseLoginForm => {
     if (isSuccess) {
       dispatch(setUserData({ token: loginRes?.token, role: loginRes?.role }));
     }
-  }, [isSuccess]);
+  }, [dispatch, isSuccess, loginRes?.role, loginRes?.token]);
 
   return {
     onSubmit,

@@ -3,8 +3,7 @@ import { useSurveyList } from "./survey-list.hook";
 import { ModalWindow } from "components/modal-window";
 
 export const SurveyList = () => {
-  const { data, isLoading, handleClick, isModalOpen, onClose } =
-    useSurveyList();
+  const { data, handleClick, isModalOpen, onClose } = useSurveyList();
 
   return (
     <Grid container alignItems="center" justifyContent="space-between">

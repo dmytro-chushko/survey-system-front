@@ -1,5 +1,5 @@
 import { InferType } from "yup";
-import { loginSchema } from "validation-schemas/login-schemas";
+import { loginSchema } from "validation-schemas/login-form.schema";
 
 export type LoginFormData = InferType<typeof loginSchema>;
 

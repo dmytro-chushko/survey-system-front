@@ -1,9 +1,12 @@
 import { Box, Button, Container, Grid } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useSharedLayout } from "./shared-layout.hook";
+import { APP_ROUTE_KEYS } from "utils/consts";
 
 export const SharedLayout = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { handleLogout, data, isLoading } = useSharedLayout();
 
   return (
@@ -30,13 +33,23 @@ export const SharedLayout = () => {
             {isLoading ? "...Loading" : data?.role}
           </Box>
         </Grid>
-        <Button
-          variant="contained"
-          startIcon={<LogoutIcon />}
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
+        <Grid container item xs="auto" gap={2}>
+          {id && (
+            <Button
+              variant="contained"
+              onClick={() => navigate(`/${APP_ROUTE_KEYS.SURVEY_LIST}`)}
+            >
+              Back to the survey list
+            </Button>
+          )}
+          <Button
+            variant="contained"
+            startIcon={<LogoutIcon />}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </Grid>
       </Grid>
       <Outlet />
     </Container>

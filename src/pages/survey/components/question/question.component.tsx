@@ -1,3 +1,4 @@
+import { Control, Controller } from "react-hook-form";
 import { QuestionMark } from "@mui/icons-material";
 import {
   FormControl,
@@ -9,7 +10,6 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { Control, Controller } from "react-hook-form";
 
 interface IQuestionProps {
   id: string;

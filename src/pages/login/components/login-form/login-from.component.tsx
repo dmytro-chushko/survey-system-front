@@ -1,9 +1,9 @@
 import { Login } from "@mui/icons-material";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginFormData } from "types/login.types";
-import { loginSchema } from "validation-schemas/login-schemas";
+import { loginSchema } from "validation-schemas/login-form.schema";
 import { EmailField } from "../email-field";
 import { PasswordField } from "../password-field";
 import { useLoginForm } from "./login-form.hook";
@@ -25,7 +25,7 @@ export const LoginForm = () => {
   });
 
   return (
-    <Box>
+    <Box maxWidth="300px">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container direction="column" gap={2}>
           <Controller
@@ -45,6 +45,19 @@ export const LoginForm = () => {
           </SubmitButton>
         </Grid>
       </form>
+      {isLoading && (
+        <>
+          <Typography align="center" mt={2}>
+            This application was deploy on render.com service. Web Services on
+            the free instance type are automatically spun down after 15 minutes
+            of inactivity. When a new request for a free service comes in,
+            Render spins it up again so it can process the request.
+          </Typography>
+          <Typography align="center" fontSize="1.5em" color="red">
+            Pease, wait 2-3 minutes
+          </Typography>
+        </>
+      )}
     </Box>
   );
 };
