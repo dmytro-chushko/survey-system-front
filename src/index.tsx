@@ -8,8 +8,6 @@ import App from "./app";
 import { persistor, store } from "redux/store";
 import reportWebVitals from "./reportWebVitals";
 
-console.log(process.env.REACT_APP_BASE_URL);
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
