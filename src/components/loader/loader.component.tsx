@@ -4,11 +4,14 @@ import { useAppSelector } from "redux/hooks";
 import { REDUCER_PATHES } from "utils/consts";
 
 export const Loader = () => {
-  const isLoading = useAppSelector((state) =>
-    Object.values(state[REDUCER_PATHES.SURVEY].queries).some(
-      (entry) => entry?.status === "pending"
-    )
+  const { mutations, queries } = useAppSelector(
+    (state) => state[REDUCER_PATHES.SURVEY]
   );
+
+  const isLoading = [
+    ...Object.values(mutations),
+    ...Object.values(queries),
+  ].some((item) => item?.status === "pending");
 
   return (
     <Backdrop sx={{ zIndex: "1" }} open={isLoading}>
