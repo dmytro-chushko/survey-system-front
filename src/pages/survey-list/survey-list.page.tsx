@@ -20,7 +20,7 @@ export const SurveyList = () => {
             </Button>
           </Grid>
         ))}
-      <ModalWindow isOpen={isModalOpen} onClose={onClose}>
+      <ModalWindow isOpen={isModalOpen} onClose={onClose} button>
         You have already taken this survey
       </ModalWindow>
     </Grid>

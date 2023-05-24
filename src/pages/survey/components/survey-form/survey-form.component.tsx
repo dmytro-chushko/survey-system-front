@@ -42,6 +42,7 @@ export const SurveyForm = () => {
         isOpen={isModalOpen}
         handleButtonClick={handleBackToSurveyList}
         buttonText="back to survey list"
+        button
       >
         Thank you for completing the survey
       </ModalWindow>

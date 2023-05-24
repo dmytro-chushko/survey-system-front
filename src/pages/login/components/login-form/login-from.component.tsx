@@ -8,6 +8,7 @@ import { EmailField } from "../email-field";
 import { PasswordField } from "../password-field";
 import { useLoginForm } from "./login-form.hook";
 import { SubmitButton } from "components/submit-button";
+import { ModalWindow } from "components/modal-window";
 
 export const LoginForm = () => {
   const { onSubmit, isLoading } = useLoginForm();
@@ -45,19 +46,18 @@ export const LoginForm = () => {
           </SubmitButton>
         </Grid>
       </form>
-      {isLoading && (
-        <>
-          <Typography align="center" mt={2}>
-            This application was deploy on render.com service. Web Services on
-            the free instance type are automatically spun down after 15 minutes
-            of inactivity. When a new request for a free service comes in,
-            Render spins it up again so it can process the request.
-          </Typography>
-          <Typography align="center" fontSize="1.5em" color="red">
-            Pease, wait 2-3 minutes
-          </Typography>
-        </>
-      )}
+
+      <ModalWindow isOpen={isLoading}>
+        <Typography align="center" mt={2}>
+          This application was deploy on render.com service. Web Services on the
+          free instance type are automatically spun down after 15 minutes of
+          inactivity. When a new request for a free service comes in, Render
+          spins it up again so it can process the request.
+        </Typography>
+        <Typography align="center" fontSize="1.5em" color="red">
+          Pease, wait 2-3 minutes
+        </Typography>
+      </ModalWindow>
     </Box>
   );
 };

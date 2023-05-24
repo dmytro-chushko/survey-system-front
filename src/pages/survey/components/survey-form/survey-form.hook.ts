@@ -31,6 +31,7 @@ export const useSurveyForm = (): IUseServeyForm => {
       return;
     }
     await submitAnswers({ answers: data, categoryId: id || "" });
+    setIsModalOpen(true);
   };
 
   const handleBackToSurveyList = () => {

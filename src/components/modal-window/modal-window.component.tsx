@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Modal, Typography } from "@mui/material";
+import { Box, Button, Grid, Modal } from "@mui/material";
 
 interface IModalWindowProps {
   isOpen: boolean;
@@ -6,6 +6,7 @@ interface IModalWindowProps {
   children: React.ReactNode;
   handleButtonClick?: () => void;
   buttonText?: string;
+  button?: boolean;
 }
 
 export const ModalWindow: React.FC<IModalWindowProps> = ({
@@ -14,6 +15,7 @@ export const ModalWindow: React.FC<IModalWindowProps> = ({
   children,
   handleButtonClick,
   buttonText,
+  button,
 }) => {
   const style = {
     position: "absolute" as "absolute",
@@ -30,11 +32,13 @@ export const ModalWindow: React.FC<IModalWindowProps> = ({
   return (
     <Modal open={isOpen} onClose={onClose}>
       <Box sx={style}>
-        <Typography mb={2}>{children}</Typography>
+        <Box mb={2}>{children}</Box>
         <Grid container alignItems="cente" justifyContent="center">
-          <Button variant="contained" onClick={handleButtonClick || onClose}>
-            {buttonText || "ok"}
-          </Button>
+          {button && (
+            <Button variant="contained" onClick={handleButtonClick || onClose}>
+              {buttonText || "ok"}
+            </Button>
+          )}
         </Grid>
       </Box>
     </Modal>
