@@ -9,6 +9,7 @@ import { PasswordField } from "../password-field";
 import { useLoginForm } from "./login-form.hook";
 import { SubmitButton } from "components/submit-button";
 import { ModalWindow } from "components/modal-window";
+import { Timer } from "components/timer";
 
 export const LoginForm = () => {
   const { onSubmit, isLoading } = useLoginForm();
@@ -57,6 +58,7 @@ export const LoginForm = () => {
         <Typography align="center" fontSize="1.5em" color="red">
           Pease, wait 2-3 minutes
         </Typography>
+        <Timer />
       </ModalWindow>
     </Box>
   );
